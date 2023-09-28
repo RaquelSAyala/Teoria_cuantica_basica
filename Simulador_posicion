@@ -1,0 +1,25 @@
+Clase 28/09/23
+
+import numpy as np
+# 1. Calcular la probabilidad de encontrar la partícula en una posición en particular
+def calcular_probabilidad(vector_ket, posicion_deseada):
+    amplitud = vector_ket[posicion_deseada]
+    probabilidad = np.abs(amplitud) ** 2
+    return probabilidad
+
+def calcular_probabilidad_transicion(vector_ket_inicial, vector_ket_final):
+    producto_interno = np.vdot(vector_ket_inicial, vector_ket_final)
+    probabilidad_transicion = np.abs(producto_interno) ** 2
+    return probabilidad_transicion
+
+# Ejemplo de uso con números complejos
+
+posicion_deseada = 2
+vector_ket_1 = np.array([0.7 - 0.3j, 0.2 + 0.1j, 0.1 - 0.2j])# Vector ket con números complejos
+vector_ket_2 = np.array([0.5 + 0.2j, 0.3 - 0.1j, 0.0 + 0.4j]) # Vector ket con números complejos
+
+probabilidad_posicion = calcular_probabilidad(vector_ket_1, posicion_deseada)
+probabilidad_transicion = calcular_probabilidad_transicion(vector_ket_1, vector_ket_2)
+
+print(f"La probabilidad de encontrar la partícula en la posición {posicion_deseada} es: {probabilidad_posicion}")
+print(f"La probabilidad de transición del primer vector al segundo es: {probabilidad_transicion}")
