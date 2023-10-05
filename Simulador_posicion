@@ -1,5 +1,3 @@
-Clase 28/09/23
-
 import numpy as np
 # 1. Calcular la probabilidad de encontrar la partícula en una posición en particular
 def calcular_probabilidad(vector_ket, posicion_deseada):
@@ -12,14 +10,46 @@ def calcular_probabilidad_transicion(vector_ket_inicial, vector_ket_final):
     probabilidad_transicion = np.abs(producto_interno) ** 2
     return probabilidad_transicion
 
-# Ejemplo de uso con números complejos
+# Función para calcular la amplitud de transición
+def amplitud_transicion(vector_ket_inicial, vector_ket_final):
+    # Conjugate transpose del vector inicial
+    vector_inicial_conjugado = np.conj(vector_ket_inicial)
+    # Producto escalar entre el vector final y el vector inicial conjugado
+    amplitud = np.dot(vector_inicial_conjugado, vector_ket_final).real
+    # Probabilidad cuadrada de transición
+    probabilidad = np.abs(amplitud) ** 2
+    return probabilidad
 
-posicion_deseada = 2
-vector_ket_1 = np.array([0.7 - 0.3j, 0.2 + 0.1j, 0.1 - 0.2j])# Vector ket con números complejos
-vector_ket_2 = np.array([0.5 + 0.2j, 0.3 - 0.1j, 0.0 + 0.4j]) # Vector ket con números complejos
+# Definir la matriz hermitiana (reemplázala con tu matriz)
+def es_hermitiana(matriz):
+    return np.allclose(matriz, matriz.conj().T)
 
-probabilidad_posicion = calcular_probabilidad(vector_ket_1, posicion_deseada)
-probabilidad_transicion = calcular_probabilidad_transicion(vector_ket_1, vector_ket_2)
+def main():
+    posicion_deseada = 2
+    vector_ket_1 = np.array([0.7 - 0.3j, 0.2 + 0.1j, 0.1 - 0.2j])  # Vector ket con números complejos
+    vector_ket_2 = np.array([0.5 + 0.2j, 0.3 - 0.1j, 0.0 + 0.4j])  # Vector ket con números complejos
+    probabilidad = amplitud_transicion(vector_ket_1, vector_ket_2)
+    probabilidad_posicion = calcular_probabilidad(vector_ket_1, posicion_deseada)
+    probabilidad_transicion = calcular_probabilidad_transicion(vector_ket_1, vector_ket_2)
 
-print(f"La probabilidad de encontrar la partícula en la posición {posicion_deseada} es: {probabilidad_posicion}")
-print(f"La probabilidad de transición del primer vector al segundo es: {probabilidad_transicion}")
+    print(f"La probabilidad de encontrar la partícula en la posición {posicion_deseada} es: {probabilidad_posicion}")
+    print(f"La probabilidad de transición del primer vector al segundo es: {probabilidad_transicion}")
+    print("Probabilidad de transición:", probabilidad)
+
+    A = np.array([[1, 2 + 1j], [2 - 1j, 3]])
+    if es_hermitiana(A):
+        # Definir el estado |psi⟩ (reemplázalo con tu estado)
+        psi = np.array([1, 0])  # Ejemplo: estado base |0⟩
+        # Calcular el valor esperado (media)
+        valor_esperado = np.dot(psi.conj().T, np.dot(A, psi)).real
+        # Calcular A^2
+        A_cuadrada = np.dot(A, A)
+        # Calcular el valor esperado de A^2
+        valor_esperado_cuadrado = np.dot(psi.conj().T, np.dot(A_cuadrada, psi)).real
+        # Calcular la varianza
+        varianza = valor_esperado_cuadrado - valor_esperado ** 2
+        print(f"Valor esperado (media): {valor_esperado}")
+        print(f"Varianza: {varianza}")
+    else:
+        print("La matriz no es hermitiana.")
+main()
