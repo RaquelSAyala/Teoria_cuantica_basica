@@ -1,62 +1,45 @@
 ### Raquel Selma
 
-## Ejemplo de Cálculos con Números Complejos en Python
-Este es un ejemplo de código en Python que realiza varios cálculos utilizando números complejos. Los cálculos se dividen en cuatro partes principales:
+# Simulador de Posición y Dinámica Cuántica
 
-## 1. Cálculo de Probabilidad
-En esta sección, calculamos la probabilidad de encontrar una partícula en una posición específica en un vector dado. También calculamos la probabilidad de transición de un vector inicial a otro.
-import numpy as np
+Este es un programa que realiza cálculos y simulaciones relacionados con conceptos de física cuántica, como probabilidad, amplitud de transición, media y varianza del observable, cálculo de valores propios y probabilidad de transición a vectores propios, y dinámica de sistemas cuánticos.
 
-# Ejemplo de uso de números complejos
+## Uso
+El programa incluye varias funciones que puedes utilizar. Aquí hay un resumen de lo que hace cada función:
 
-- vector1 = np.array([0.3-0.2j, 0.7+0.1j, 0.5-0.4j, 0.6-0.3j, 0.2+0.5j])
-- position = 3
-- initial_vector = np.array([0.1+0.4j, 0.2-0.3j, 0.3-0.2j, 0.4-0.1j])
-- final_vector = np.array([0.7-0.3j, 0.5+0.2j, 0.4-0.5j, 0.3+0.6j])
+### 1. Calcular la Probabilidad
+- calculate_probability(vector, position)
 
-- Función para calcular la probabilidad de encontrar una partícula en una posición
-def calculate_probability(vector, position):
-    ...
+Esta función calcula la probabilidad de encontrar una partícula en una posición dada en un vector de amplitudes.
 
-- Función para calcular la probabilidad de transición de un vector inicial a otro
-def calculate_transition_probability(initial_vector, final_vector):
-    ...
+### 2. Calcular la Probabilidad de Transición
+- calculate_transition_probability(initial_vector, final_vector)
 
-- Resultados
-print(f"La probabilidad de encontrar la partícula en la posición {position} es: {calculate_probability(vector1, position)}")
-print(f"La probabilidad de transición de un vector inicial a otro es: {calculate_transition_probability(initial_vector, final_vector)}")
+Esta función calcula la probabilidad de transición entre dos vectores iniciales y finales.
 
-## 2. Amplitud de Transición
-En esta sección, calculamos la amplitud de transición entre dos vectores complejos.
-- Función para calcular la amplitud de transición entre dos vectores
-def transition_amplitude(vector1, vector2):
-    ...
+### 3. Amplitud de Transición
+- transition_amplitude(vector1, vector2)
 
-- Resultado
-print("Amplitud de transición:", transition_amplitude(complex_vector1, complex_vector2))
+Calcula la amplitud de transición entre dos vectores.
 
-## 3. Media, Varianza y Valores Propios
-En esta sección, calculamos la media y la varianza de una matriz observable con números complejos. También calculamos los valores propios de la matriz observable y la probabilidad de transición a los vectores propios.
-- Función para calcular la media y la varianza de una matriz observable
-def calculate_mean_variance(observable_matrix, state):
-    ...
+### 4. Media y Varianza del Observable
+- calculate_mean_variance(observable_matrix, state)
 
-- Función para calcular los valores propios y la probabilidad de transición a los vectores propios
-def calculate_eigenvalues_transition_probability(observable_matrix, state):
-    ...
+Calcula la media y la varianza del observable representado por una matriz hermitiana y un estado.
 
-- Resultados
-print("Media del observable:", mean)
-print("Varianza del observable:", variance)
-print("Valores propios del observable:", eigenvalues)
-print("Probabilidad de transición a vectores propios:", eigen_transition_probabilities)
+### 5. Cálculo de Valores Propios y Probabilidad de Transición a Vectores Propios
+- calculate_eigenvalues_transition_probability(observable_matrix, state)
 
-## 4. Dinámica del Sistema
-En esta sección, realizamos la evolución dinámica de un sistema utilizando matrices de operación.
+Calcula los valores propios de una matriz hermitiana y la probabilidad de transición a los vectores propios correspondientes.
 
-- Función para la evolución dinámica del sistema
-def dynamic_evolution(operation_matrices, initial_state):
-    ...
+### 6. Dinámica del Sistema
+- dynamic_evolution(operation_matrices, initial_state)
+
+Simula la dinámica de un sistema cuántico utilizando una lista de matrices de operación y un estado inicial.
+
+## Ejemplos de Uso
+El archivo de código contiene ejemplos de uso de estas funciones para que puedas comprender cómo funcionan.
+
 
 - Resultado
 print("Estado final después de la dinámica del sistema:", final_state)
